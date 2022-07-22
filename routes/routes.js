@@ -1,12 +1,16 @@
 const express = require("express");
+const moment = require("moment");
 const Model = require("../models/model");
 const router = express.Router();
 
 // add vote
 router.post("/addVote", async (req, res) => {
   const data = new Model({
-    name: req.body.name,
-    age: req.body.age,
+    voteName: req.body.voteName,
+    voteDescription: req.body.voteDescription,
+    voted: req.body.voted,
+    votedBy: req.body.votedBy,
+    createdDate: moment(),
   });
 
   try {
