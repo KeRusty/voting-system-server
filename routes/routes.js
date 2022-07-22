@@ -38,7 +38,7 @@ router.get("/getOneVote/:id", async (req, res) => {
 });
 
 //Update by ID Method
-router.patch("/update/:id", async (req, res) => {
+router.patch("/updateVote/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const updatedData = req.body;
@@ -53,11 +53,11 @@ router.patch("/update/:id", async (req, res) => {
 });
 
 //Delete by ID Method
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/deleteVote/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await Model.findByIdAndDelete(id);
-    res.send(`Document with ${data.name} has been deleted..`);
+    res.send(`Vote with ${data.voteName} has been deleted..`);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
