@@ -18,11 +18,11 @@ const dataSchema = new mongoose.Schema({
     type: String,
   },
   createdDate: {
-    required: true,
+    required: false,
     type: Date,
   },
   updatedDate: {
-    required: true,
+    required: false,
     type: Date,
   },
 });
