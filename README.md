@@ -8,4 +8,4 @@
 
 ### `npm start`
 
-Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
+Server will be on [http://localhost:3000](http://localhost:3000) , can use Postman to test out the functionality
