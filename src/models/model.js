@@ -17,6 +17,11 @@ const dataSchema = new mongoose.Schema({
     required: true,
     type: String,
   },
+  voteCount: {
+    required: false,
+    type: Number,
+    default: 0,
+  },
   createdDate: {
     required: false,
     type: Date,
