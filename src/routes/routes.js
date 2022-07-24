@@ -9,6 +9,7 @@ router.post("/addVote", async (req, res) => {
     voteName: req.body.voteName,
     voteDescription: req.body.voteDescription,
     voted: req.body.voted,
+    voteCount: req.body.voteCount ? req.body.voteCount : 0,
     votedBy: req.body.votedBy,
     createdDate: moment(),
   });
@@ -52,6 +53,44 @@ router.patch("/updateVote/:id", async (req, res) => {
     const result = await Model.findByIdAndUpdate(id, updatedData, options);
 
     res.send(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+//Increment Vote by ID Method
+router.patch("/incrementVote/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const data = await Model.findById(id);
+    if (data) {
+      data.voteCount += 1;
+      data.updatedDate = moment();
+      const options = { new: true };
+
+      const result = await Model.findByIdAndUpdate(id, data, options);
+
+      res.send(result);
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+//Decrement Vote by ID Method
+router.patch("/decrementVote/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const data = await Model.findById(id);
+    if (data) {
+      data.voteCount === 0 ? (data.voteCount = 0) : (data.voteCount -= 1);
+      data.updatedDate = moment();
+      const options = { new: true };
+
+      const result = await Model.findByIdAndUpdate(id, data, options);
+
+      res.send(result);
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
