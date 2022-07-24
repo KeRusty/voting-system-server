@@ -9,12 +9,8 @@ const dataSchema = new mongoose.Schema({
     required: false,
     type: String,
   },
-  voted: {
-    required: true,
-    type: Boolean,
-  },
   votedBy: {
-    required: true,
+    required: false,
     type: String,
   },
   voteCount: {
